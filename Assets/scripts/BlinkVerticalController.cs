@@ -10,12 +10,12 @@ public class BlinkVerticalController : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		goPlayer = GameObject.Find("Player");
+		goPlayer = GameObject.Find("NotWalle");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.B) && boPuedeBlinkear)
+		if (Input.GetKeyDown(KeyCode.A) && boPuedeBlinkear)
 		{
 			fDistanciay = goDistancia.transform.position.y - goPlayer.transform.position.y;
 			goPlayer.transform.position += new Vector3(0, fDistanciay * 2);
