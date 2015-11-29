@@ -8,19 +8,23 @@ public class BlinkHorizontalController : MonoBehaviour {
 	GameObject goEscenario;
 	public bool boPuedeBlinkear = false;
 	public float fDistanciax;
+    public bool boAvanza = true;
+    float distanciaRecorrido = 500;
 
 	// Use this for initialization
 	void Start () {
-		goPlayer = GameObject.Find("Player");
+		goPlayer = GameObject.Find("NotWalle");
 		goEscenario = GameObject.Find("ESCENARIO");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.B) && boPuedeBlinkear)
+		if (Input.GetKeyDown(KeyCode.A) && boPuedeBlinkear)
 		{
+            float direccion = 1;
+            if (boAvanza) direccion = -1;
 			fDistanciax = goDistancia.transform.position.x - goPlayer.transform.position.x;
-			goEscenario.transform.Rotate(new Vector3(0, 500, 0) * Time.deltaTime);
+            goEscenario.transform.Rotate(new Vector3(0, distanciaRecorrido * direccion, 0) * Time.deltaTime);
 		}
 	}
 

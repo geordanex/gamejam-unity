@@ -32,14 +32,14 @@ public class NotWalleController : MonoBehaviour {
 	void Update () {
 	    if(Input.GetKey(KeyCode.LeftArrow))
         {
-            scene.Rotate(new Vector3(0f, speed, 0f) * Time.deltaTime * -1f);
+            scene.Rotate(new Vector3(0f, 0f, speed) * Time.deltaTime);
             ChangeDirection("left");
             ChangeState(STATE_RUN);
             isRun = true;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            scene.Rotate(new Vector3(0f, speed, 0f) * Time.deltaTime);
+            scene.Rotate(new Vector3(0f, 0f, speed) * Time.deltaTime * -1f);
             ChangeDirection("right");
             ChangeState(STATE_RUN);
             isRun = true;
@@ -57,7 +57,7 @@ public class NotWalleController : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             ChangeState(STATE_JUMP);
-            rb.AddForce(new Vector3(0f, 50f, 0f),ForceMode.Impulse);
+            rb.AddForce(new Vector3(0f, 20f, 0f),ForceMode.Impulse);
             isGrounded = false;
            
         }
