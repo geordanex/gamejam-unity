@@ -18,7 +18,7 @@ public class BlinkVerticalController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.A) && boPuedeBlinkear)
 		{
 			fDistanciay = goDistancia.transform.position.y - goPlayer.transform.position.y;
-			goPlayer.transform.position += new Vector3(0, fDistanciay * 2);
+			goPlayer.transform.position = new Vector3(0, fDistanciay * 2);
 		}
 	}
 	
