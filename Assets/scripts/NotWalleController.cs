@@ -14,7 +14,15 @@ public class NotWalleController : MonoBehaviour {
     public Transform scene;
     public float speed;
     public bool introCompleted = false;
+    public bool enDesarme = false;
+    public bool enDesplazamiento = false;
+    public bool yaNoBaja = false;
+    public bool terminoDesarme = false;
+    public GameObject coliderMove;
 
+    private MoveController move;
+    private bool canMoveLeft;
+    private bool canMoveRight;
     private Animator animator;
     private Rigidbody2D rb;
     private bool isRun;
@@ -24,13 +32,19 @@ public class NotWalleController : MonoBehaviour {
     private int lastYBlink;
     private bool keyPassBlink;
     private float fDistanciaX;
-    float distanciaRecorrido = 50;
-    private string dire;
+    float distanciaRecorrido = 60;
+    public string dire;
+    private GameObject FinDesarme;
+    public int loop;
+
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        //move = coliderMove.GetComponent<MoveController>();
+        FinDesarme = GameObject.Find("FinDesarme");
 
+        loop = 1;
         isRun = false;
         speed = 20;
         isGrounded = false;
@@ -39,13 +53,32 @@ public class NotWalleController : MonoBehaviour {
         boPuedeBlinkearY = false;
         keyPassBlink = true;
         lastYBlink = 1;
+        canMoveLeft = true;
+        canMoveRight = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        //canMoveLeft = move.canMoveLeft;
+        //canMoveRight = move.canMoveRight;
+
+        if (enDesarme) desarmeNotWalle();
+
+        if (terminoDesarme)
+        {
+            if (gameObject.transform.position.y <= FinDesarme.transform.position.y)
+            {
+                terminoDesarme = false;
+                gameObject.GetComponent<CircleCollider2D>().enabled = true;
+                introCompleted = true;
+            }
+        }
 
         if (!introCompleted) return;
 
+        switch(loop)
+        { 
+            case 1:
 	    if(Input.GetKey(KeyCode.LeftArrow))
         {
             scene.Rotate(new Vector3(0f, 0f, speed) * Time.deltaTime);
@@ -96,7 +129,7 @@ public class NotWalleController : MonoBehaviour {
             {
                 if (lastYBlink == 1)
                 {
-                    transform.position = new Vector3(transform.position.x, transform.position.y + 0.03f, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, transform.position.y + 0.04f, transform.position.z);
                     
                 }
                 if (lastYBlink == -1)
@@ -121,7 +154,17 @@ public class NotWalleController : MonoBehaviour {
         Debug.Log("isgrounded" + isGrounded);
 
         Debug.Log(lastYBlink);
-        
+
+                if(Input.GetKey(KeyCode.T))
+                {
+                    //animator.set
+                }
+        break;
+
+            case 2:
+
+        break;
+    }
 	}
 
     void OnCollisionEnter2D(Collision2D col)
@@ -136,6 +179,12 @@ public class NotWalleController : MonoBehaviour {
         {
             Destroy(col.gameObject);
         }
+        if(col.gameObject.tag == "Resorte")
+        {
+            ChangeState(STATE_JUMP);
+            rb.AddForce(new Vector2(0f, 50f), ForceMode2D.Force);
+            isGrounded = false;
+        }
     }
     // Deteccion del blink
     void OnTriggerEnter2D(Collider2D coll)
@@ -148,7 +197,19 @@ public class NotWalleController : MonoBehaviour {
         if (coll.gameObject.tag == "blinkOpY")
         {
             boPuedeBlinkearY = true;
+        }
 
+        //Impulsor
+        if (coll.gameObject.tag == "Impulsor")
+        {
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
+            rb.AddForce(new Vector3(0, 420, 0));
+            enDesarme = true;
+            introCompleted = false;
+        }
+        if(coll.gameObject.tag=="Fin")
+        {
+            Application.LoadLevel(1);
         }
     }
 
@@ -161,7 +222,6 @@ public class NotWalleController : MonoBehaviour {
         if (coll.gameObject.tag == "blinkOpY")
         {
             boPuedeBlinkearY = false;
-
         }
     }
 
@@ -204,6 +264,59 @@ public class NotWalleController : MonoBehaviour {
             case STATE_DRILL:
                 animator.SetInteger("State", STATE_DRILL);
                 break;
+        }
+    }
+
+    void desarmeNotWalle()
+    {
+        GameObject puntoDesarme1 = GameObject.Find("p1");
+        GameObject puntoDesarme2 = GameObject.Find("p2");
+        GameObject puntoDesarme3 = GameObject.Find("p3");
+        GameObject puntoDesarme4 = GameObject.Find("p4");
+        GameObject puntoDesarme5 = GameObject.Find("p5");
+        GameObject puntoDesarme6 = GameObject.Find("p6");
+
+        if (enDesplazamiento)
+        {
+            /*if (gameObject.transform.position.y <= puntoDesarme4.transform.position.y)
+                gameObject.transform.position += (new Vector3(0, 0.4f, 0) * Time.deltaTime);*/
+
+            if (gameObject.transform.position.y <= puntoDesarme4.transform.position.y &&
+                gameObject.transform.position.x >= puntoDesarme4.transform.position.x)
+            {
+                gameObject.transform.position += (new Vector3(0, 0.1f, 0) * Time.deltaTime);
+            }
+            else if (gameObject.transform.position.x >= puntoDesarme6.transform.position.x)
+            {
+                yaNoBaja = true;
+                gameObject.transform.position += (new Vector3(0, 0.1f * -1, 0) * Time.deltaTime);
+            }
+
+            if (gameObject.transform.position.x >= puntoDesarme6.transform.position.x)
+            {
+                if (gameObject.transform.position.y <= puntoDesarme6.transform.position.y && yaNoBaja) { }
+                else { scene.Rotate(new Vector3(0f, 0f, speed / 2) * Time.deltaTime); }
+            }
+            else
+            {
+                Debug.Log("ENTRA RENDER");
+                gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                terminoDesarme = true;
+                yaNoBaja = false;
+                rb.isKinematic = false;
+                enDesplazamiento = false;
+                enDesarme = false;
+            }
+        }
+        else
+        {
+            if (gameObject.transform.position.y >= puntoDesarme1.transform.position.y)
+            {
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                rb.isKinematic = true;
+                rb.velocity = new Vector2();
+                enDesplazamiento = true;
+            }
         }
     }
 }

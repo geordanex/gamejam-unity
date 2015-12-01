@@ -1,0 +1,249 @@
+fileFormatVersion: 2
+guid: 2a8e52151fb43c84481f70ea63f40724
+timeCreated: 1448826846
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: BARRA PRINCIPAL
+    100002: Cylinder004
+    100004: Cylinder005
+    100006: ENGRANAJE 01
+    100008: ENGRANAJE 02
+    100010: //RootNode
+    100012: ESCENARIO PRINCIPAL
+    100014: Line001
+    100016: Line002
+    100018: Line003
+    100020: Line004
+    100022: Line005
+    100024: Line006
+    100026: Line007
+    100028: Line008
+    100030: Line009
+    100032: Line011
+    100034: Line012
+    100036: Line013
+    100038: Line017
+    100040: Line018
+    100042: Line019
+    100044: Line020
+    100046: Line021
+    100048: Line022
+    100050: Line023
+    100052: Line024
+    100054: Line025
+    100056: Line026
+    100058: Line031
+    100060: Line032
+    100062: Object009
+    100064: Object010
+    100066: Object011
+    100068: PLATAFORMA
+    100070: PLATAFORMA ANIMADA
+    400000: BARRA PRINCIPAL
+    400002: Cylinder004
+    400004: Cylinder005
+    400006: ENGRANAJE 01
+    400008: ENGRANAJE 02
+    400010: //RootNode
+    400012: ESCENARIO PRINCIPAL
+    400014: Line001
+    400016: Line002
+    400018: Line003
+    400020: Line004
+    400022: Line005
+    400024: Line006
+    400026: Line007
+    400028: Line008
+    400030: Line009
+    400032: Line011
+    400034: Line012
+    400036: Line013
+    400038: Line017
+    400040: Line018
+    400042: Line019
+    400044: Line020
+    400046: Line021
+    400048: Line022
+    400050: Line023
+    400052: Line024
+    400054: Line025
+    400056: Line026
+    400058: Line031
+    400060: Line032
+    400062: Object009
+    400064: Object010
+    400066: Object011
+    400068: PLATAFORMA
+    400070: PLATAFORMA ANIMADA
+    2300000: BARRA PRINCIPAL
+    2300002: Cylinder004
+    2300004: Cylinder005
+    2300006: ENGRANAJE 01
+    2300008: ENGRANAJE 02
+    2300010: ESCENARIO PRINCIPAL
+    2300012: Line001
+    2300014: Line002
+    2300016: Line003
+    2300018: Line004
+    2300020: Line005
+    2300022: Line006
+    2300024: Line007
+    2300026: Line008
+    2300028: Line009
+    2300030: Line011
+    2300032: Line012
+    2300034: Line013
+    2300036: Line017
+    2300038: Line018
+    2300040: Line019
+    2300042: Line020
+    2300044: Line021
+    2300046: Line022
+    2300048: Line023
+    2300050: Line024
+    2300052: Line025
+    2300054: Line026
+    2300056: Line031
+    2300058: Line032
+    2300060: Object009
+    2300062: Object010
+    2300064: Object011
+    2300066: PLATAFORMA
+    2300068: PLATAFORMA ANIMADA
+    3300000: BARRA PRINCIPAL
+    3300002: Cylinder004
+    3300004: Cylinder005
+    3300006: ENGRANAJE 01
+    3300008: ENGRANAJE 02
+    3300010: ESCENARIO PRINCIPAL
+    3300012: Line001
+    3300014: Line002
+    3300016: Line003
+    3300018: Line004
+    3300020: Line005
+    3300022: Line006
+    3300024: Line007
+    3300026: Line008
+    3300028: Line009
+    3300030: Line011
+    3300032: Line012
+    3300034: Line013
+    3300036: Line017
+    3300038: Line018
+    3300040: Line019
+    3300042: Line020
+    3300044: Line021
+    3300046: Line022
+    3300048: Line023
+    3300050: Line024
+    3300052: Line025
+    3300054: Line026
+    3300056: Line031
+    3300058: Line032
+    3300060: Object009
+    3300062: Object010
+    3300064: Object011
+    3300066: PLATAFORMA
+    3300068: PLATAFORMA ANIMADA
+    4300000: Line001
+    4300002: PLATAFORMA
+    4300004: Line002
+    4300006: ENGRANAJE 02
+    4300008: ENGRANAJE 01
+    4300010: ESCENARIO PRINCIPAL
+    4300012: Line003
+    4300014: Line004
+    4300016: Line005
+    4300018: Line006
+    4300020: Line007
+    4300022: Line008
+    4300024: Line009
+    4300026: Cylinder004
+    4300028: Cylinder005
+    4300030: Line011
+    4300032: Line012
+    4300034: Line013
+    4300036: Object009
+    4300038: Line017
+    4300040: Line018
+    4300042: Line019
+    4300044: Line020
+    4300046: Line021
+    4300048: Line022
+    4300050: Line023
+    4300052: Line024
+    4300054: Line025
+    4300056: PLATAFORMA ANIMADA
+    4300058: BARRA PRINCIPAL
+    4300060: Line026
+    4300062: Line031
+    4300064: Line032
+    4300066: Object010
+    4300068: Object011
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
