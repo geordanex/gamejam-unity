@@ -36,6 +36,9 @@ public class NotWalleController : MonoBehaviour {
     public string dire;
     private GameObject FinDesarme;
     public int loop;
+	private float scalex;
+	private float scaley;
+	private float scalez;
 
 	// Use this for initialization
 	void Start () {
@@ -43,6 +46,10 @@ public class NotWalleController : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         //move = coliderMove.GetComponent<MoveController>();
         FinDesarme = GameObject.Find("FinDesarme");
+
+		scalex = transform.localScale.x;
+		scaley = transform.localScale.y;
+		scalez = transform.localScale.z;
 
         loop = 1;
         isRun = false;
@@ -108,7 +115,7 @@ public class NotWalleController : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             ChangeState(STATE_JUMP);
-            rb.AddForce(new Vector2(0f, 50f),ForceMode2D.Force);
+            rb.AddForce(new Vector2(0f, 125f),ForceMode2D.Force);
             isGrounded = false;
            
         }
@@ -129,12 +136,12 @@ public class NotWalleController : MonoBehaviour {
             {
                 if (lastYBlink == 1)
                 {
-                    transform.position = new Vector3(transform.position.x, transform.position.y + 0.04f, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
                     
                 }
                 if (lastYBlink == -1)
                 {
-                    transform.position = new Vector3(transform.position.x, transform.position.y - 0.04f, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, transform.position.y - 0.2f, transform.position.z);
                 }
             }
         }
@@ -182,10 +189,18 @@ public class NotWalleController : MonoBehaviour {
         if(col.gameObject.tag == "Resorte")
         {
             ChangeState(STATE_JUMP);
-            rb.AddForce(new Vector2(0f, 50f), ForceMode2D.Force);
+            rb.AddForce(new Vector2(0f, 125f), ForceMode2D.Force);
             isGrounded = false;
         }
     }
+	void OnCollisionStay2D(Collision2D col)
+	{
+		if(col.gameObject.tag == "Piso" && !isGrounded)
+		{
+			ChangeState(STATE_IDLE);
+			isGrounded = true;
+		}
+	}
     // Deteccion del blink
     void OnTriggerEnter2D(Collider2D coll)
     {
@@ -229,12 +244,12 @@ public class NotWalleController : MonoBehaviour {
     {
         if(dir == "left")
         {
-            transform.localScale = new Vector3(0.01320629f, 0.01320629f, 0.01320629f);
+			transform.localScale = new Vector3(scalex,scaley,scalez);
             dire = "left";
         }
         if (dir == "right")
         {
-            transform.localScale = new Vector3(-0.01320629f, 0.01320629f, 0.01320629f);
+			transform.localScale = new Vector3(scalex * -1f,scaley,scalez);
             dire = "right";
         }
     }

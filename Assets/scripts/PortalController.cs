@@ -6,7 +6,7 @@ public class PortalController : MonoBehaviour {
 	// Use this for initialization
     public Transform target;
     public float fDistanciax;
-    public float fCostanteRotacion = 3125;
+    public float fCostanteRotacion = 3125; //3125
 
     private GameObject scene;
 	void Start () {
@@ -21,13 +21,15 @@ public class PortalController : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            fDistanciax = col.gameObject.transform.position.x - target.transform.position.x;
+			fDistanciax = col.gameObject.transform.position.x - target.transform.position.x;
+
             col.gameObject.transform.position = new Vector3(
                 col.gameObject.transform.position.x,
                 target.transform.position.y,
                 col.gameObject.transform.position.z);
             //col.gameObject.transform.position = target.transform.position;
-            scene.transform.Rotate(new Vector3(0, 0, fDistanciax * fCostanteRotacion) * Time.deltaTime);
+			Debug.Log(fDistanciax.ToString());
+			//scene.transform.Rotate(new Vector3(0,0,fDistanciax * fCostanteRotacion + 125f) * Time.deltaTime);
         }
     }
 }
